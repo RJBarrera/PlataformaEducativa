@@ -1,0 +1,64 @@
+@extends('layouts.app')
+
+@section('content')
+
+
+<div class="container">
+@if(Session::has('Mensaje')){{
+	Session::get('Mensaje')
+
+}}
+@endif
+
+<a href="{{ url('Salon/create') }}"> Crear Grupo</a>
+
+<table class="table table-light">
+
+	<thead class="thead-light">
+
+	
+
+			<br/>
+			
+		<tr>
+
+			<th>Idsalon</th>
+			<th>Salon</th>
+			
+		</tr>
+	</thead>
+
+	<tbody>
+	@foreach($Salon as $salon)
+		<tr>
+			<td>{{ $salon->id}}</td>
+			<td>{{ $salon->salon}}</td>
+		
+		
+		<td>
+
+			<!--Boton para llamar la pantalla Editar Usuario-->
+				<a href="{{ url('/Salon/'.$salon->id.'/edit') }}">
+				Editar	
+				</a> 
+
+			| 
+			
+			<!--Boton para Borrar Usuario-->
+			<form method="post" action="{{ url('/Salon/'.$salon->id) }}">
+				{{csrf_field() }}
+				{{ method_field('DELETE') }}
+				<button type="submit" onclick="return confirm('¿Esta seguro que desea borrar?')">Borrar</button>
+
+
+				</form>
+			
+		</td>
+
+		</tr>
+	@endforeach
+	</tbody>
+
+</table>
+</div>
+@endsection

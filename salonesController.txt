@@ -1,0 +1,111 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Salon;
+use Illuminate\Http\Request;
+
+class SalonController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //s
+         $datos['Salon']=Salon::paginate(5);
+
+        return view('Salon.index',$datos);
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return view('Salon.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        //$datosUsuario=request()->all();
+
+        $datosSalon=request()->except('_token');
+
+        Salon::insert($datosSalon);
+
+        return response()->json($datosSalon);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Salon  $salon
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Salon $salon)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Salon  $salon
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+         $salon= Salon::findOrFail($id);
+
+        return view('Salon.edit',compact('salon'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Salon  $salon
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+        //
+        $datosSalon=request()->except(['_token','_method']);
+        Salon::where('id','=',$id)->update($datosSalon);
+
+        //$usuario= Usuarios::findOrFail($id);
+       //return view('Usuarios.edit',compact('usuario'));
+
+         return redirect('Salon')->with('Mensaje','Usuario modificado con exito.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Salon  $salon
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+        Salon::destroy($id);
+
+        return redirect('Salon')->with('Mensaje','Usuario elimindado.');
+    }
+}

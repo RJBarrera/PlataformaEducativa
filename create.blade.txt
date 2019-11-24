@@ -1,0 +1,17 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
+
+Seccion para crear usuarios
+<form action="{{ url('/Usuarios')}}" method="post" enctype="multipart/form-data">	
+{{ csrf_field() }}
+
+@include('Usuarios.form',['Modo'=>'Crear Usuario'])
+
+
+
+</form>
+</div>
+@endsection

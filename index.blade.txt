@@ -1,0 +1,75 @@
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
+
+@if(Session::has('Mensaje')){{
+	Session::get('Mensaje')
+
+}}
+@endif
+
+<a href="{{ url('Usuarios/create') }}" class="btn btn-success"> Crear Usuario</a>
+<br/>
+<br/>
+
+<table class="table table-light table-hover
+">
+
+	<thead class="thead-light">
+
+	
+
+			<br/>
+			
+		<tr>
+
+			<th>IdUsuario</th>
+			<th>Nombre</th>
+			<th>Correo</th>
+			<th>Telefono</th>
+			<th>Curp</th>
+			<th>Dirección</th>
+			<th>Rol</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	@foreach($Usuarios as $usuario)
+		<tr>
+			<td>{{ $usuario->id}}</td>
+			<td>{{ $usuario->nombtre}} {{ $usuario->apellidoP}} {{ $usuario->apellidoM}} </td>
+			<td>{{ $usuario->correo}}</td>
+			<td>{{ $usuario->numeroCel}}</td>
+			<td>{{ $usuario->Curp}}</td>
+			<td>{{ $usuario->direccion}}</td>
+			<td>{{ $usuario->Rol}}</td>
+		
+		<td>
+
+			<!--Boton para llamar la pantalla Editar Usuario-->
+				<a class="btn btn-warning" href="{{ url('/Usuarios/'.$usuario->id.'/edit') }}">
+				Editar	
+				</a> 
+
+			| 
+			
+			<!--Boton para Borrar Usuario-->
+			<form method="post" action="{{ url('/Usuarios/'.$usuario->id) }}" style="display:inline;">
+				{{csrf_field() }}
+				{{ method_field('DELETE') }}
+				<button class="btn btn-danger" type="submit" onclick="return confirm('¿Esta seguro que desea borrar?')">Borrar</button>
+
+
+				</form>
+			
+		</td>
+
+		</tr>
+	@endforeach
+	</tbody>
+
+</table>
+</div>
+@endsection

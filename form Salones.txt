@@ -1,0 +1,8 @@
+{{ $Modo=='Crear Grupo' ? 'Agregar Grupo':'Editar Grupo'}}
+
+<label for="Nombredelgrupo">{{'Nombre del Grupo'}}</label>
+<input type="text" name="salon" id="Nombredelgrupo" value="{{ isset($salon->salon)?$salon->salon:''}}">
+
+
+
+<input type="submit" value="Guardar">

@@ -1,0 +1,45 @@
+
+
+<div class="form-group">
+	<label for="Nombre" class="control-label">{{'Nombre'}}</label>
+
+	<input type="text" class="form-control" name="nombtre" id="Nombre" value="{{ isset($usuario->nombtre)?$usuario->nombtre:''}}">
+</div>
+
+<div class="form-group">
+<label for="ApellidoPaterno" class="control-label">{{'Apellido Paterno'}}</label>
+<input type="text" class="form-control" name="apellidoP" id="ApellidoPaterno" value="{{ isset($usuario->apellidoP)?$usuario->apellidoP:''}}">
+</div>
+
+<div class="form-group">
+<label for="ApellidoMaterno" class="control-label">{{'Apellido Materno'}}</label>
+<input type="text" class="form-control" name="apellidoM" id="ApellidoMaterno" value="{{ isset($usuario->apellidoM)?$usuario->apellidoM:''}}">
+</div>
+
+<div class="form-group">
+<label for="Direccion" class="control-label">{{'Direccion'}}</label>
+<input type="text" class="form-control" name="direccion" id="Direccion" value="{{ isset($usuario->direccion)?$usuario->direccion:''}}">
+</div>
+
+<div class="form-group">
+<label for="Telefono" class="control-label">{{'Telefono'}}</label>
+<input type="text" class="form-control" name="numeroCel" id="Telefono" value="{{ isset($usuario->numeroCel)?$usuario->numeroCel:''}}">
+</div>
+
+<div class="form-group">
+<label for="Correo" class="control-label">{{'Correo'}}</label>
+<input type="text" class="form-control" name="correo" id="Correo" value="{{ isset($usuario->correo)?$usuario->correo:''}}">
+</div>
+
+<div class="form-group">
+<label for="Rol" class="control-label">{{'Rol'}}</label>
+<input type="text" class="form-control" name="Rol" id="Rol" value="{{ isset($usuario->Rol)?$usuario->Rol:''}}">
+</div>
+
+<div class="form-group">
+<label for="Curp" class="control-label">{{'Curp'}}</label>
+<input type="text" class="form-control" name="Curp" id="Curp" value="{{ isset($usuario->Curp)?$usuario->Curp:''}}">
+</div>
+
+<input type="submit" class="btn btn-success" value="Guardar">
+<a class="btn btn-primary" href="{{ url('Usuarios/') }}"> Cancelar </a>

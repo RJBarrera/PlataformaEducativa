@@ -1,0 +1,10 @@
+
+
+<form action="{{ url('/Salon/'.$salon->idsalon) }}" method="post" enctype="multipart/form-data">
+{{ csrf_field() }}
+{{ method_field('PATCH') }}
+
+
+@include('Salon.form',['Modo'=>'Editar'])
+
+</form>

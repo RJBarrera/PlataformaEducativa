@@ -1,0 +1,8 @@
+Seccion para crear Salon
+<form action="{{ url('/Salon')}}" method="post" enctype="multipart/form-data">	
+{{ csrf_field() }}
+@include('Salon.form',['Modo'=>'Crear Grupo'])
+
+
+
+</form>
